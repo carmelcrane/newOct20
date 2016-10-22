@@ -1,0 +1,4 @@
+var Array
+
+
+Array.prototype.customForEach = function(fn){//}

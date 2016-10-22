@@ -1,0 +1,65 @@
+
+noStroke();
+var x = 10;
+draw = function {
+background (0);
+
+    //all code here run over and over
+    //position of car
+//draw stars
+// The number of points of the star
+var P = 6;
+
+// The number of points to skip when drawing the star
+var Q = 14;
+
+// The radius of the star
+var radius = 8;
+
+var angleChange = 350 / P;
+
+background(7, 7, 71);
+stroke(232, 221, 16);
+strokeWeight(2);
+
+var pointX = [];
+var pointY = [];
+var pointDone = [];
+
+for (var i = 0; i < P; i += 1) {
+    var angle = i * angleChange;
+    var x = radius * cos(angle) + 200;
+    var y = radius * sin(angle) + 200;
+
+    pointX[i] = x;
+    pointY[i] = y;
+    pointDone[i] = false;
+}
+
+var current = 0;
+
+for (var i = 0; i < P; i += 1) {
+    var next = (current + Q) % P;
+    line(pointX[current], pointY[current], pointX[next], pointY[next]);
+
+    pointDone[current] = true;
+
+    if (pointDone[next]) {
+        next += 1;
+    }
+
+    current = next;
+}
+//draw moon
+
+    //draw Punko-kitty
+    fill (255,0,115);
+    rect(x,200,100,20);
+    rect(x+15, 278,70,40);
+
+    //draw wheels
+    fill(77,66,66);
+    ellipse(x+25,221,24,24);
+    ellipse(x+75,221,24,24);
+    x= x+10;
+};
